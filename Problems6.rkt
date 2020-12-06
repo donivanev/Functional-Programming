@@ -21,7 +21,7 @@
 
 (define (find-min lst)
   (define (helper lst min)
-    (cond[(null? lst)  min]
+    (cond[(null? lst)       min]
          [(< (car lst) min) (helper (cdr lst) (car lst))]
          [else              (helper (cdr lst) min)]))
 (helper '(54 19 25) +inf.0))
@@ -32,9 +32,9 @@
 (find-min '(1 2 3))
 
 (define (erase-element lst element)
-  (cond[(null? lst) lst]
+  (cond[(null? lst)           lst]
        [(= element (car lst)) (cdr lst)]
-       [else (cons (car lst) (erase-element (cdr lst) element))]))
+       [else  (cons (car lst) (erase-element (cdr lst) element))]))
 
 (erase-element '(1 2 3) 2)
 

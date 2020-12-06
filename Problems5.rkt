@@ -38,5 +38,22 @@
       (my-compose f (repeated-c f (- n 1)))))
 ((repeated-c (λ (x) (+ x 1)) 5) 1)
 
-(define (derive-x f eps)
-  )
+;(define (derive-x f eps)
+;  )
+
+(define (sum-digit-divisors n)
+  (define (helper k)
+    (cond [(= k 0)                              0]
+          [(= (remainder k 10) 0)               (helper (quotient k 10))]
+          [(= 0 (remainder n (remainder k 10))) (+ (remainder k 10) (helper (quotient k 10)))]
+          [else                                 (helper (quotient k 10))]))
+(helper n))
+
+(define (same-sum a b)
+  (define (helper-m m)
+    (define (helper-n n)
+      (cond[(> n b)                                           0]
+           [(= (sum-digit-divisors m) (sum-digit-divisors n)) (+ 1 (helper-n (+ n 1)))]
+           [else                                              (helper-n (+ n 1))]))
+(if (= m b) 0 (+ helper-n (+ m 1)) (helper-m (+ m 1)))))
+(helper-m a))
