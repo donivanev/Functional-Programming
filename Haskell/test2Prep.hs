@@ -110,10 +110,12 @@ closestToAverage products = returnStrByValue products (closest products (average
 cheaperAlternative :: Shop -> Int
 cheaperAlternative xs = length $ filter hasTwoPrices $ groupPrices xs
     where
-        names = nub [name | (name, _, _) <- xs] -- nub е вградена ф-ия от библиотеката Data.List, която изтрива повторенията в списък. Тук ще получим списък от имената на продукти, без повторения
+        names = nub [name | (name, _, _) <- xs] -- nub е вградена ф-ия от библиотеката Data.List, която изтрива повторенията в списък. 
+                                                   Тук ще получим списък от имената на продукти, без повторения
 
         groupPrices :: Shop -> [[Float]]
-        groupPrices xs = [[price | (name', _, price) <- xs, name' == name] | name <- names] -- тук ще получим списък от списъци, всеки съдържащ различните цени на даден продукт 
+        groupPrices xs = [[price | (name', _, price) <- xs, name' == name] | name <- names] -- тук ще получим списък от списъци, всеки 
+                                                                                               съдържащ различните цени на даден продукт 
 
         hasTwoPrices xs = length (nub xs) > 1 -- ако има две различни цени, то след като премахнем повторенията трябва списъкът да е с дължина поне 2
 -}
@@ -134,7 +136,8 @@ distance point1 point2
     = (fst3 point1 - fst3 point2) * (fst3 point1 - fst3 point2) + (snd3 point1 - snd3 point2) * (snd3 point1 - snd3 point2) + (trd3 point1 - trd3 point2) * (trd3 point1 - trd3 point2)
 
 minDistance :: [(Double,Double,Double)] -> Double
-minDistance xs = minimum [distance p1 p2 | p1 <- xs, p2 <- xs, p1 /= p2] -- изграждаме списък от всички двойки различни точки, за всяка двойка изчисляваме съответното разстояние, и взимаме минималното
+minDistance xs = minimum [distance p1 p2 | p1 <- xs, p2 <- xs, p1 /= p2] -- изграждаме списък от всички двойки различни точки, за всяка двойка изчисляваме 
+                                                                         -- съответното разстояние, и взимаме минималното
     --where distance (x1,y1,z1) (x2,y2,z2) = (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) + (z1-z2)*(z1-z2)
 
 --minDist :: [(Double, Double, Double)] -> Double -> Double
