@@ -132,8 +132,9 @@ trd3 :: (a, b, c) -> c
 trd3 (_, _, z) = z
 
 distance :: (Double, Double, Double) -> (Double, Double, Double) -> Double
-distance point1 point2 
-= (fst3 point1 - fst3 point2) * (fst3 point1 - fst3 point2) + (snd3 point1 - snd3 point2) * (snd3 point1 - snd3 point2) + (trd3 point1 - trd3 point2) * (trd3 point1 - trd3 point2)
+distance point1 point2 = (fst3 point1 - fst3 point2) * (fst3 point1 - fst3 point2) + 
+                         (snd3 point1 - snd3 point2) * (snd3 point1 - snd3 point2) +
+                         (trd3 point1 - trd3 point2) * (trd3 point1 - trd3 point2)
 
 minDistance :: [(Double,Double,Double)] -> Double
 minDistance xs = minimum [distance p1 p2 | p1 <- xs, p2 <- xs, p1 /= p2] -- изграждаме списък от всички двойки различни точки, за всяка двойка изчисляваме 
